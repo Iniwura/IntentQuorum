@@ -1,0 +1,68 @@
+{
+  "ok": true,
+  "schema": {
+    "ctor": {
+      "params": [],
+      "kwparams": {}
+    },
+    "methods": {
+      "consume_authorization": {
+        "params": [["proposal_id", "string"], ["proposal_fingerprint", "string"]],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "string",
+        "payable": false
+      },
+      "create_proposal": {
+        "params": [["proposal_id", "string"], ["action_type", "string"], ["action", "string"], ["target", "string"], ["resource", "string"], ["amount", "string"], ["purpose", "string"], ["source", "string"], ["constraints", "string"], ["approvers", [{"$rep": "address"}]], ["threshold", "int"], ["executor", "address"]],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "string",
+        "payable": false
+      },
+      "get_approval": {
+        "params": [["proposal_id", "string"], ["approval_id", "string"]],
+        "kwparams": {},
+        "readonly": true,
+        "ret": {"$dict": "any"}
+      },
+      "get_approval_for_approver": {
+        "params": [["proposal_id", "string"], ["approver", "address"]],
+        "kwparams": {},
+        "readonly": true,
+        "ret": {"$dict": "any"}
+      },
+      "get_proposal": {
+        "params": [["proposal_id", "string"]],
+        "kwparams": {},
+        "readonly": true,
+        "ret": {"$dict": "any"}
+      },
+      "get_proposal_approval_ids": {
+        "params": [["proposal_id", "string"]],
+        "kwparams": {},
+        "readonly": true,
+        "ret": [{"$rep": "string"}]
+      },
+      "get_proposal_fingerprint": {
+        "params": [["proposal_id", "string"]],
+        "kwparams": {},
+        "readonly": true,
+        "ret": "string"
+      },
+      "is_authorized": {
+        "params": [["proposal_id", "string"]],
+        "kwparams": {},
+        "readonly": true,
+        "ret": "bool"
+      },
+      "submit_approval": {
+        "params": [["proposal_id", "string"], ["approval_text", "string"]],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "string",
+        "payable": false
+      }
+    }
+  }
+}
