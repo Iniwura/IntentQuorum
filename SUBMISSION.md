@@ -28,9 +28,23 @@ perform that interpretation by itself.
 ## Evidence
 
 Local gates and deployment details are kept in [PORTAL.md](PORTAL.md), with
-the exact source SHA recorded after all gates pass. The final report must
-distinguish finalized deployment, source readback, and any live smoke subset;
+the exact source SHA recorded after all gates pass. The final report
+distinguishes finalized deployment, source readback, and the live smoke subset;
 transaction hashes alone are not treated as deployment proof.
+
+Deployment evidence:
+
+- Network: Studio Dev (`61997`)
+- Contract: `0x3673225E4652880E4b8238A3B60222c499b46648`
+- Deployment transaction: `0xac221273a16e09ef8925af648fb820d8a7e2f4faca6446de443175d95c83868b`
+- Result: `ACCEPTED` / `MAJORITY_AGREE`; execution `FINISHED_WITH_RETURN`
+- Frozen source SHA-256: `17f4a87acb1e6684d39c659a74eea563f592b10f9ed4db8d69ce6b7387f4e6a0`
+- Source readback: exact match with the local source after removing only the CLI response wrapper and trailing blank lines.
+- Local verification: 67 direct-harness tests passed; lint, validation, schema extraction, packaged typecheck, and Pyright passed.
+- Controlled live smoke test passed against the deployed address: proposal `live-iq-20261008-a`, three approvers, threshold 2, two distinct approvals, `qualified_approval_count: 2`, executor consume, and final state `CONSUMED`.
+- Successful consume transaction: `0x08a411fa11295ea09c94d7a3ef498eeedde3f8dcab992eaf146c7b0257921f4d`.
+- Replay transaction `0xc28bf584235e5214ac23de760a7aa727b432150bc39b84c0849970fbd50a3ee7` finalized with `FINISHED_WITH_ERROR` and the expected `proposal is not authorized` rejection.
+- Full live smoke details, fingerprints, approval IDs, and the second approval transaction are recorded in `PORTAL.md`.
 
 ## Limitations
 

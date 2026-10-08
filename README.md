@@ -99,5 +99,17 @@ executor access control, positive and negative semantic projections, prompt
 injection data isolation, malformed consensus output, validator disagreement,
 quorum counting, replay, cross-proposal binding, and single-use consumption.
 
-Deployment evidence is recorded in [SUBMISSION.md](SUBMISSION.md) after the
-source freeze and live verification.
+The frozen implementation has 67 passing direct-harness tests. The checked-in
+schema matches fresh extraction, and the packaged typecheck and direct Pyright
+check are clean.
+
+## Studio Dev deployment
+
+- Network: Studio Dev (`61997`)
+- Contract: [`0x3673225E4652880E4b8238A3B60222c499b46648`](https://explorer-studio.genlayer.com/address/0x3673225E4652880E4b8238A3B60222c499b46648)
+- Deployment transaction: `0xac221273a16e09ef8925af648fb820d8a7e2f4faca6446de443175d95c83868b`
+- Finalized result: `ACCEPTED` / `MAJORITY_AGREE`, `FINISHED_WITH_RETURN`
+- Frozen source SHA-256: `17f4a87acb1e6684d39c659a74eea563f592b10f9ed4db8d69ce6b7387f4e6a0`
+- Deployment source readback matched the local source exactly after removing the CLI wrapper and trailing blank lines.
+
+The controlled live smoke test passed with proposal `live-iq-20261008-a`: two distinct approvals reached threshold 2, the designated executor consumed it, and a replay finalized as the expected contract error. See [`PORTAL.md`](PORTAL.md) and [`SUBMISSION.md`](SUBMISSION.md) for the complete evidence record.
